@@ -1,0 +1,147 @@
+---
+import type { Project } from "../data/portfolio";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import ExternalIcon from "./icons/ExternalIcon.astro";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+<article class="project-card reveal">
+  <div class="project-image">
+    <img
+      src={project.image}
+      alt={`Vista previa de ${project.title}`}
+      width="800"
+      height="450"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="project-body">
+    <h3 class="project-title">{project.title}</h3>
+    <p class="project-desc">{project.description}</p>
+
+    <ul class="project-tags" aria-label="Tecnologías utilizadas">
+      {project.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+
+    <div class="project-links">
+      <a
+        href={project.repoUrl}
+        class="project-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Código de ${project.title} en GitHub`}
+      >
+        <GitHubIcon size={17} />
+        Código
+      </a>
+      <a
+        href={project.demoUrl}
+        class="project-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Demo de ${project.title}`}
+      >
+        <ExternalIcon size={17} />
+        Demo
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--red);
+    box-shadow: var(--shadow-red);
+  }
+
+  .project-image {
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    aspect-ratio: 16 / 9;
+    background: var(--bg-alt);
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+
+  .project-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    flex: 1;
+  }
+
+  .project-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .project-tags li {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 43, 58, 0.12);
+    border: 1px solid rgba(255, 43, 58, 0.35);
+    color: #ff8a94;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1.25rem;
+    padding-top: 0.4rem;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .project-link:hover {
+    color: var(--red);
+  }
+</style>

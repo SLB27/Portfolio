@@ -1,0 +1,84 @@
+---
+import { technologies } from "../data/portfolio";
+---
+<section class="tech" id="tecnologias">
+  <div class="container">
+    <h2 class="section-title reveal">Mis <span class="accent">tecnologías</span></h2>
+    <p class="section-subtitle reveal">
+      Herramientas y lenguajes con los que construyo mis proyectos.
+    </p>
+
+    <div class="tech-grid">
+      {
+        technologies.map((tech) => (
+          <div class="tech-card reveal">
+            <div class="tech-icon">
+              <img
+                src={tech.icon}
+                alt={`Logo de ${tech.name}`}
+                width="56"
+                height="56"
+                loading="lazy"
+              />
+            </div>
+            <p class="tech-name">{tech.name}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.1rem;
+  }
+
+  .tech-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.6rem 1rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tech-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--red);
+    box-shadow: var(--shadow-red);
+  }
+
+  .tech-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem;
+    transition: transform 0.2s ease;
+  }
+
+  .tech-card:hover .tech-icon {
+    transform: scale(1.08);
+  }
+
+  .tech-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .tech-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+</style>

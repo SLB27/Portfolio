@@ -1,0 +1,30 @@
+---
+import { projects } from "../data/portfolio";
+import ProjectCard from "./ProjectCard.astro";
+---
+<section class="projects" id="proyectos">
+  <div class="container">
+    <h2 class="section-title reveal">Mis <span class="accent">proyectos</span></h2>
+    <p class="section-subtitle reveal">
+      Una selección de proyectos personales en los que he trabajado.
+    </p>
+
+    <div class="projects-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+</style>

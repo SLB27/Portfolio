@@ -1,0 +1,80 @@
+---
+import { site } from "../data/portfolio";
+
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-brand">
+      <span class="logo-mark">&lt;/&gt;</span>
+      {site.firstName} <strong>{site.lastName}</strong>
+    </p>
+    <nav class="footer-nav" aria-label="Navegación secundaria">
+      {site.navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <p class="footer-copy">
+      © {year} {site.name} — Hecho con Astro
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .footer-brand strong {
+    color: var(--red);
+  }
+
+  .logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.4rem;
+  }
+
+  .footer-nav a {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav a:hover {
+    color: var(--red);
+  }
+
+  .footer-copy {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+</style>

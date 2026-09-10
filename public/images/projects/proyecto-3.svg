@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14141a"/>
+      <stop offset="1" stop-color="#12060a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="250" y="60" width="300" height="200" rx="20" fill="#0b0b0f" stroke="#ff2b3a" stroke-width="2"/>
+  <circle cx="290" cy="100" r="7" fill="#ff2b3a"/>
+  <rect x="310" y="93" width="180" height="12" rx="6" fill="#2a2a33"/>
+  <rect x="280" y="130" width="240" height="14" rx="7" fill="#f5f5f7" opacity="0.9"/>
+  <rect x="280" y="155" width="170" height="12" rx="6" fill="#3a3a44"/>
+  <rect x="280" y="185" width="120" height="34" rx="17" fill="#ff2b3a"/>
+  <rect x="410" y="185" width="120" height="34" rx="17" fill="none" stroke="#ff2b3a" stroke-width="2"/>
+  <text x="400" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#f5f5f7">Proyecto 3</text>
+  <text x="400" y="388" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#a1a1aa">Sustituye por tu captura en /images/projects/</text>
+</svg>

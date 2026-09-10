@@ -1,0 +1,178 @@
+/* ============================================================
+   Portafolio — Estilo moderno y limpio, rojo como color principal
+   ============================================================ */
+
+:root {
+  /* Marca */
+  --red: #ff2b3a;
+  --red-dark: #c21020;
+  --red-glow: rgba(255, 43, 58, 0.35);
+
+  /* Superficies (tema oscuro) */
+  --bg: #0b0b0f;
+  --bg-alt: #101016;
+  --card: #14141b;
+  --card-hover: #181822;
+  --border: #24242e;
+
+  /* Texto */
+  --text: #f5f5f7;
+  --text-muted: #a1a1aa;
+  --text-dim: #6d6d78;
+
+  /* Tipografía y ritmo */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --nav-height: 68px;
+  --max-width: 1120px;
+  --shadow-red: 0 8px 32px -8px var(--red-glow);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 16px);
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Fondo sutil con resplandor rojo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(600px 320px at 85% -60px, rgba(255, 43, 58, 0.12), transparent 70%),
+    radial-gradient(700px 420px at 8% 30%, rgba(255, 43, 58, 0.06), transparent 70%),
+    var(--bg);
+}
+
+/* Contenedor */
+.container {
+  width: min(100% - 2.5rem, var(--max-width));
+  margin-inline: auto;
+}
+
+section {
+  padding: 5.5rem 0;
+}
+
+/* Títulos de sección */
+.section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-title .accent {
+  color: var(--red);
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  font-size: 1.05rem;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff;
+  box-shadow: var(--shadow-red);
+}
+
+.btn-primary:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-outline:hover {
+  border-color: var(--red);
+  color: var(--red);
+  transform: translateY(-2px);
+}
+
+/* Animación de aparición al hacer scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  section {
+    padding: 4rem 0;
+  }
+}

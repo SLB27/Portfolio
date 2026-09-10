@@ -1,0 +1,174 @@
+---
+import { site } from "../data/portfolio";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import LinkedInIcon from "./icons/LinkedInIcon.astro";
+import MailIcon from "./icons/MailIcon.astro";
+import CopyIcon from "./icons/CopyIcon.astro";
+import CheckIcon from "./icons/CheckIcon.astro";
+---
+<section class="contact" id="contacto">
+  <div class="container contact-inner reveal">
+    <h2 class="section-title">¿Hablamos<span class="accent">?</span></h2>
+    <p class="section-subtitle">
+      Estoy abierto a nuevas oportunidades, colaboraciones o simplemente a
+      charlar sobre desarrollo web. ¡Escríbeme!
+    </p>
+
+    <div class="email-box">
+      <MailIcon size={22} />
+      <span class="email-text" id="email-text">{site.email}</span>
+    </div>
+
+    <button class="btn btn-primary copy-btn" id="copy-email" data-email={site.email}>
+      <span class="icon-copy"><CopyIcon /></span>
+      <span class="icon-check"><CheckIcon /></span>
+      <span class="copy-label">Copiar correo</span>
+    </button>
+    <p class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></p>
+
+    <div class="social-row">
+      <a
+        href={site.github}
+        class="social-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        <GitHubIcon />
+      </a>
+      <a
+        href={site.linkedin}
+        class="social-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        <LinkedInIcon />
+      </a>
+      <a href={`mailto:${site.email}`} class="social-btn" aria-label="Enviar correo">
+        <MailIcon />
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Copia el email al portapapeles y muestra confirmación (JS nativo)
+  const copyBtn = document.getElementById("copy-email");
+  const feedback = document.getElementById("copy-feedback");
+  const label = copyBtn?.querySelector(".copy-label");
+
+  copyBtn?.addEventListener("click", async () => {
+    const email = copyBtn.getAttribute("data-email") ?? "";
+    if (!email) return;
+
+    try {
+      // API moderna del portapapeles (requiere HTTPS o localhost)
+      await navigator.clipboard.writeText(email);
+    } catch {
+      // Alternativa para navegadores/contextos sin Clipboard API
+      const input = document.createElement("input");
+      input.value = email;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      input.remove();
+    }
+
+    copyBtn.classList.add("copied");
+    if (label) label.textContent = "¡Copiado!";
+    if (feedback) feedback.textContent = `Correo copiado: ${email}`;
+
+    window.setTimeout(() => {
+      copyBtn.classList.remove("copied");
+      if (label) label.textContent = "Copiar correo";
+      if (feedback) feedback.textContent = "";
+    }, 2500);
+  });
+</script>
+
+<style>
+  .contact-inner {
+    max-width: 640px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .email-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.85rem 1.6rem;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    max-width: 100%;
+  }
+
+  .email-box svg {
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .email-text {
+    font-weight: 600;
+    font-size: 1.02rem;
+    overflow-wrap: anywhere;
+  }
+
+  .copy-btn .icon-check {
+    display: none;
+  }
+
+  .copy-btn.copied {
+    background: #16a34a;
+    box-shadow: 0 8px 32px -8px rgba(22, 163, 74, 0.45);
+  }
+
+  .copy-btn.copied .icon-copy {
+    display: none;
+  }
+
+  .copy-btn.copied .icon-check {
+    display: inline-flex;
+  }
+
+  .copy-feedback {
+    min-height: 1.6em;
+    margin-top: 0.7rem;
+    color: #4ade80;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .social-btn {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .social-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--red);
+    color: var(--red);
+    box-shadow: var(--shadow-red);
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+import { about } from "../data/portfolio";
+---
+<section class="about" id="sobre-mi">
+  <div class="container">
+    <h2 class="section-title reveal">Sobre <span class="accent">mí</span></h2>
+    <p class="section-subtitle reveal">
+      Un poco más sobre quién soy y por qué me apasiona programar.
+    </p>
+
+    <div class="about-grid">
+      <div class="about-card reveal">
+        {
+          about.paragraphs.map((text) => (
+            <p class="about-text">{text}</p>
+          ))
+        }
+      </div>
+
+      <div class="about-stats reveal">
+        {
+          about.highlights.map((item) => (
+            <div class="stat">
+              <span class="stat-value">{item.value}</span>
+              <span class="stat-label">{item.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
+    border-radius: var(--radius);
+    padding: 2.25rem;
+  }
+
+  .about-text {
+    color: var(--text-muted);
+    margin-bottom: 1.1rem;
+    font-size: 1.03rem;
+  }
+
+  .about-text:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-text:first-child::first-letter {
+    color: var(--red);
+    font-weight: 800;
+    font-size: 1.4em;
+  }
+
+  .about-stats {
+    display: grid;
+    gap: 1rem;
+    align-content: stretch;
+  }
+
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .stat:hover {
+    transform: translateY(-4px);
+    border-color: var(--red);
+    box-shadow: var(--shadow-red);
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--red);
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 860px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-card {
+      padding: 1.5rem;
+    }
+
+    .about-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .about-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
