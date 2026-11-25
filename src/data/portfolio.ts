@@ -1,47 +1,36 @@
-// ============================================================
-// ⚙️ ARCHIVO CENTRAL DE DATOS DEL PORTFOLIO
-// Edita aquí tu nombre, enlaces, email, tecnologías y proyectos.
-// Todos los componentes de la página leen de este archivo.
-// ============================================================
-
 export interface Technology {
-  /** Nombre que se muestra debajo del icono */
   name: string;
-  /** Ruta del icono en /public (ej: "/icons/tech/react.svg") */
   icon: string;
 }
 
 export interface Project {
   title: string;
   description: string;
-  /** Imagen de la card (ej: "/images/projects/proyecto-1.svg") */
   image: string;
-  /** Tecnologías usadas (etiquetas pequeñas en la card) */
   tags: string[];
-  /** Enlaces opcionales: déjalos como "#" si aún no los tienes */
   repoUrl: string;
   demoUrl: string;
 }
 
 export const site = {
   // ---- Identidad ----
-  name: "Tu Nombre",
-  firstName: "Tu",
-  lastName: "Nombre",
-  role: "Desarrollador Web Full Stack",
+  name: "Samuel Sánchez",
+  firstName: "Samuel",
+  lastName: "Sánchez",
+  role: "Desarrollador Web Full Stack | Administrador de Sistemas",
   tagline:
-    "Construyo experiencias web modernas, rápidas y accesibles con tecnologías actuales.",
+    "Construyo experiencias web modernas, rápidas y accesibles con tecnologías actuales y las mejores prácticas de administración de sistemas.",
 
   // ---- Foto de perfil ----
   // Sustituye este archivo por tu foto real (mismo nombre o actualiza la ruta).
   avatar: "/images/avatar.svg",
 
   // ---- Enlaces sociales ----
-  github: "https://github.com/tu-usuario",
-  linkedin: "https://www.linkedin.com/in/tu-usuario",
+  github: "https://github.com/SLB27",
+  linkedin: "https://www.linkedin.com/in/samuel-sánchez-ballesteros-a44703335 ",
 
   // ---- Contacto ----
-  email: "tu-correo@ejemplo.com",
+  email: "samuel121106@protonmail.com",
 
   // ---- Navegación ----
   navLinks: [
@@ -57,21 +46,16 @@ export const site = {
 export const about = {
   title: "Sobre mí",
   paragraphs: [
-    "¡Hola! Soy desarrollador web y me apasiona convertir ideas en productos digitales reales. Disfruto especialmente del frontend: interfaces limpias, cuidadas al detalle y con una gran experiencia de usuario.",
-    "Mi pasión por la programación nació de la curiosidad por entender cómo funcionan las cosas en la web. Desde entonces no he parado de aprender: cada proyecto es una oportunidad para mejorar, probar nuevas herramientas y escribir código más limpio y mantenible.",
-    "Cuando no estoy programando, me gusta explorar nuevas tecnologías, contribuir a proyectos personales y seguir aprendiendo para convertirme cada día en un mejor desarrollador.",
+    "¡Hola! Soy desarrollador web full stack y administrador de sistemas con más de 2 años de experiencia en el desarrollo de aplicaciones web modernas y la gestión de infraestructuras tecnológicas. Me apasiona crear soluciones digitales que sean eficientes, escalables y fáciles de usar. Mi enfoque se centra en la calidad del código, la optimización del rendimiento y la seguridad de las aplicaciones. Siempre estoy buscando aprender nuevas tecnologías y mejorar mis habilidades para ofrecer el mejor valor a los proyectos en los que trabajo.",
   ],
   highlights: [
     { value: "+2", label: "Años programando" },
-    { value: "+10", label: "Proyectos personales" },
+    { value: "2", label: "Proyectos personales" },
     { value: "∞", label: "Ganas de aprender" },
   ],
 };
 
 // ---- Sección "Tecnologías" ----
-// Iconos disponibles en /public/icons/tech/ :
-// astro, css3, figma, git, html5, javascript, mongodb, mysql,
-// nodejs, python, react, tailwindcss, typescript
 export const technologies: Technology[] = [
   { name: "HTML5", icon: "/icons/tech/html5.svg" },
   { name: "CSS3", icon: "/icons/tech/css3.svg" },
@@ -88,43 +72,41 @@ export const technologies: Technology[] = [
 ];
 
 // ---- Sección "Proyectos" ----
-// Sustituye por tus proyectos reales: cambia título, descripción,
-// imagen (/public/images/projects/...), tags y enlaces.
 export const projects: Project[] = [
   {
-    title: "Proyecto 1",
+    title: "La Pepa Peluquería",
     description:
-      "Breve descripción de tu proyecto: qué problema resuelve y qué tecnologías utilizaste para construirlo.",
-    image: "/images/projects/proyecto-1.svg",
-    tags: ["Astro", "TypeScript", "CSS"],
-    repoUrl: "#",
-    demoUrl: "#",
+      "Página web de una peluquería, diseñada para atraer clientes y mostrar los servicios ofrecidos. Construida con React y CSS para una experiencia de usuario fluida y atractiva.",
+    image: "/images/projects/hero.png",
+    tags: ["React", "JavaScript", "CSS"],
+    repoUrl: "https://github.com/SLB27/Peluqueria_Landing_Page",
+    demoUrl: "https://pepapeluqueria.com",
   },
-  {
-    title: "Proyecto 2",
-    description:
-      "Breve descripción de tu proyecto: qué problema resuelve y qué tecnologías utilizaste para construirlo.",
-    image: "/images/projects/proyecto-2.svg",
-    tags: ["React", "Node.js", "MongoDB"],
-    repoUrl: "#",
-    demoUrl: "#",
-  },
-  {
-    title: "Proyecto 3",
-    description:
-      "Breve descripción de tu proyecto: qué problema resuelve y qué tecnologías utilizaste para construirlo.",
-    image: "/images/projects/proyecto-3.svg",
-    tags: ["JavaScript", "HTML", "CSS"],
-    repoUrl: "#",
-    demoUrl: "#",
-  },
-  {
-    title: "Proyecto 4",
-    description:
-      "Breve descripción de tu proyecto: qué problema resuelve y qué tecnologías utilizaste para construirlo.",
-    image: "/images/projects/proyecto-4.svg",
-    tags: ["Python", "MySQL", "React"],
-    repoUrl: "#",
-    demoUrl: "#",
-  },
+  // {
+  //   title: "Proyecto 2",
+  //   description:
+  //     "Breve descripción de tu proyecto: qué problema resuelve y qué tecnologías utilizaste para construirlo.",
+  //   image: "/images/projects/proyecto-2.svg",
+  //   tags: ["React", "Node.js", "MongoDB"],
+  //   repoUrl: "#",
+  //   demoUrl: "#",
+  // },
+  // {
+  //   title: "Proyecto 3",
+  //   description:
+  //     "Breve descripción de tu proyecto: qué problema resuelve y qué tecnologías utilizaste para construirlo.",
+  //   image: "/images/projects/proyecto-3.svg",
+  //   tags: ["JavaScript", "HTML", "CSS"],
+  //   repoUrl: "#",
+  //   demoUrl: "#",
+  // },
+  // {
+  //   title: "Proyecto 4",
+  //   description:
+  //     "Breve descripción de tu proyecto: qué problema resuelve y qué tecnologías utilizaste para construirlo.",
+  //   image: "/images/projects/proyecto-4.svg",
+  //   tags: ["Python", "MySQL", "React"],
+  //   repoUrl: "#",
+  //   demoUrl: "#",
+  // },
 ];
